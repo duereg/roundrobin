@@ -18,7 +18,13 @@ module.exports = function (n, ps) {  // n = num players
     rs[j] = []; // create inner match array for round j
     for (var i = 0; i < n / 2; i += 1) {
       if (ps[i] !== DUMMY && ps[n - 1 - i] !== DUMMY) {
-        rs[j].push([ps[i], ps[n - 1 - i]]); // insert pair as a match
+        // insert pair as a match
+        if(j % 2 == 1) {
+          rs[j].push([ps[i], ps[n - 1 - i]]);
+        }
+        else {
+          rs[j].push([ps[n - 1 - i], ps[i]]);
+        }
       }
     }
     ps.splice(1, 0, ps.pop()); // permutate for next round
